@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Castigo {
     public static void main(String[] args) {
         // Parte 1: Calcular segundos en un año
@@ -17,8 +19,32 @@ public class Castigo {
         // Parte 3: Calcular la suma de los múltiplos de 5 entre 1 y 100
         int[] multiplosDe5 = encontrarMultiplosDe5(1, 100);
         int suma = sumarArray(multiplosDe5);
-
         System.out.println("La suma de los múltiplos de 5 entre 1 y 100 es: " + suma);
+
+        // Parte 4: Calcular el mínimo y el máximo de una lista de números enteros positivos introducidos por el usuario
+        Scanner scanner = new Scanner(System.in);
+        int numero;
+        int minimo = Integer.MAX_VALUE;
+        int maximo = Integer.MIN_VALUE;
+
+        System.out.println("Introduce números enteros positivos (introduce un número negativo para finalizar):");
+        while (true) {
+            numero = scanner.nextInt();
+            if (numero < 0) {
+                break;
+            }
+            minimo = Math.min(minimo, numero);
+            maximo = Math.max(maximo, numero);
+        }
+
+        if (minimo == Integer.MAX_VALUE || maximo == Integer.MIN_VALUE) {
+            System.out.println("No se han introducido números enteros positivos.");
+        } else {
+            System.out.println("El mínimo de la lista es: " + minimo);
+            System.out.println("El máximo de la lista es: " + maximo);
+        }
+
+        scanner.close();
     }
 
     public static long calcularSegundosEnAnio(int dias, byte horas, byte minutos, byte segundos) {
