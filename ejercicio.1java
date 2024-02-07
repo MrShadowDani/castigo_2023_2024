@@ -1,0 +1,16 @@
+public class Main {
+    public static void main(String[] args) {
+        int diasEnUnAnio = 365;
+        byte horasEnUnDia = 24;
+        byte minutosEnUnaHora = 60;
+        byte segundosEnUnMinuto = 60;
+
+        int segundosEnUnAnio = calcularSegundosEnUnAnio(diasEnUnAnio, horasEnUnDia, minutosEnUnaHora, segundosEnUnMinuto);
+        System.out.println("El número de segundos en un año es: " + segundosEnUnAnio);
+    }
+
+    public static int calcularSegundosEnUnAnio(int dias, byte horas, byte minutos, byte segundos) {
+        int segundosEnUnDia = horas * minutos * segundos;
+        return dias * segundosEnUnDia;
+    }
+}
