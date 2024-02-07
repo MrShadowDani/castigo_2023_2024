@@ -54,12 +54,34 @@ public class Castigo {
             }
             System.out.println();
         }
+
+        // Parte 6: Mostrar la lista de los N primeros números primos
+        int N = 10; // Cambiar el valor de N según sea necesario
+        int[] primos = encontrarPrimos(N);
+        System.out.println("Los primeros " + N + " números primos son:");
+        for (int primo : primos) {
+            System.out.print(primo + " ");
+        }
+        System.out.println();
+
+        // Parte 7: Descomponer un número en factores primos
+        Scanner input = new Scanner(System.in);
+        System.out.println("Introduce un número entero para descomponer en factores primos:");
+        int numeroADescomponer = input.nextInt();
+        System.out.println("Los factores primos de " + numeroADescomponer + " son:");
+        int[] factoresPrimos = descomponerEnFactoresPrimos(numeroADescomponer);
+        for (int factor : factoresPrimos) {
+            System.out.print(factor + " ");
+        }
+        System.out.println();
     }
 
+    // Método para la Parte 1
     public static long calcularSegundosEnAnio(int dias, byte horas, byte minutos, byte segundos) {
         return (long) dias * horas * minutos * segundos;
     }
 
+    // Método para la Parte 3
     public static int[] encontrarMultiplosDe5(int inicio, int fin) {
         int cantidad = 0;
         for (int i = inicio; i <= fin; i++) {
@@ -78,6 +100,7 @@ public class Castigo {
         return multiplos;
     }
 
+    // Método para la Parte 3
     public static int sumarArray(int[] array) {
         int suma = 0;
         for (int num : array) {
@@ -85,5 +108,44 @@ public class Castigo {
         }
         return suma;
     }
-}
 
+    // Método para la Parte 6
+    public static int[] encontrarPrimos(int cantidad) {
+        int[] primos = new int[cantidad];
+        int contador = 0;
+        int numero = 2;
+        while (contador < cantidad) {
+            boolean esPrimo = true;
+            for (int i = 2; i <= Math.sqrt(numero); i++) {
+                if (numero % i == 0) {
+                    esPrimo = false;
+                    break;
+                }
+            }
+            if (esPrimo) {
+                primos[contador++] = numero;
+            }
+            numero++;
+        }
+        return primos;
+    }
+
+    // Método para la Parte 7
+    public static int[] descomponerEnFactoresPrimos(int numero) {
+        if (numero <= 1) {
+            return new int[0];
+        }
+
+        int[] factoresPrimos = new int[numero];
+        int contador = 0;
+        for (int i = 2; i <= numero; i++) {
+            while (numero % i == 0) {
+                factoresPrimos[contador++] = i;
+                numero /= i;
+            }
+        }
+        int[] resultado = new int[contador];
+        System.arraycopy(factoresPrimos, 0, resultado, 0, contador);
+        return resultado;
+    }
+}
