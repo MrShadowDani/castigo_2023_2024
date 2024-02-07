@@ -37,7 +37,7 @@ public class Castigo {
             maximo = Math.max(maximo, numero);
         }
 
-        if (minimo == Integer.MAX_VALUE || maximo == Integer.MIN_VALUE) {
+        if (minimo == Integer.MAX_VALUE) {
             System.out.println("No se han introducido números enteros positivos.");
         } else {
             System.out.println("El mínimo de la lista es: " + minimo);
@@ -45,6 +45,15 @@ public class Castigo {
         }
 
         scanner.close();
+
+        // Parte 5: Mostrar la tabla de multiplicar de los 10 primeros números naturales
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Tabla de multiplicar de " + i + ":");
+            for (int j = 1; j <= 10; j++) {
+                System.out.println(i + " x " + j + " = " + (i * j));
+            }
+            System.out.println();
+        }
     }
 
     public static long calcularSegundosEnAnio(int dias, byte horas, byte minutos, byte segundos) {
@@ -77,3 +86,4 @@ public class Castigo {
         return suma;
     }
 }
+
